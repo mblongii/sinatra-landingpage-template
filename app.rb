@@ -1,20 +1,43 @@
 require 'rubygems'
 require 'sinatra'
-require 'hominid' # MailChimp
 require 'sinatra/reloader' if development?
+
+#Assets
 require 'slim'
+require 'sass'
+require 'compass'
+require "zurb-foundation"
+
+#MailChimp
+require 'hominid'
+
+
+
 
 configure do
+  set :slim, :pretty => true
 
+  Compass.configuration do |config|
+    config.project_path = File.dirname(__FILE__)
+    config.sass_dir = 'views'
+  end
+  set :sass, Compass.sass_engine_options
+  
   # MailChimp configuration: ADD YOUR OWN ACCOUNT INFO HERE!
   set :mailchimp_api_key, "YOUR MAILCHIMP API KEY HERE"
   set :mailchimp_list_name, "YOUR MAILCHIMP LIST NAME HERE"
-
 end
+
+
+get "/stylesheets/app.css" do
+  sass :"/stylesheets/app"
+end
+
 
 get '/' do
-  erb :index
+  slim :home
 end
+
 
 post '/signup' do
   email = params[:email]

@@ -3,7 +3,6 @@ source "http://rubygems.org"
 gem "hominid", "~> 3.0.5"
 gem "sinatra", "~> 1.3.4"
 gem 'sinatra-contrib'
-
 gem 'slim'
 
 gem 'sass'

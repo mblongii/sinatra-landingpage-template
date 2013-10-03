@@ -1,0 +1,11 @@
+#notices
+	#success[style="display: none;"]
+		| Success! Please check your inbox for a confirmation request.
+	#error[style="display: none;"]
+		| Sorry, MailChimp couldn't validate your email. Try again?
+form.form-inline[action="/signup"]
+	input#email.input-xlarge[name="email" type="text" placeholder="Email me about the project"]
+	button.btn.btn-success[type="submit"]
+		| Subscribe
+p.signup-terms
+	|  You will receive only relevant, occasional messages, and your email will be stored only by MailChimp, ensuring prompt removal should you choose to unsubscribe. 

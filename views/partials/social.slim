@@ -1,0 +1,8 @@
+ul.social-list-small
+	li
+		g:plusone[size="medium" href="<%= request.url %>"]
+	li
+		a.twitter-share-button[href="https://twitter.com/share" data-url="<%= request.url %>" data-text="I just signed up for this:"]
+			| Tweet
+	li
+		.fb-like[data-href="<%= request.url %>" data-send="false" data-layout="button_count" data-width="90" data-show-faces="false" data-font="arial"]
