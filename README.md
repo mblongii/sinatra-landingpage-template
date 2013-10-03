@@ -1,11 +1,11 @@
 Email Landing Page
 ============
 
-A simple, customizable landing page for email signup, based on [Twitter Bootstrap](https://github.com/twitter/bootstrap), [HTML5 Boilerplate](https://github.com/h5bp/html5-boilerplate), and [Sinatra](https://github.com/sinatra/sinatra).
+A simple, customizable landing page for email signup, based on [Zurb](https://github.com/twitter/bootstrap), [HTML5 Boilerplate](https://github.com/h5bp/html5-boilerplate), and [Sinatra](https://github.com/sinatra/sinatra).
 
 The current version has optional MailChimp and Google Analytics integration.
 
-Please visit the [live demo](http://landingpages.herokuapp.com/) on Heroku and join the project mailing list
+<!-- Please visit the [live demo](http://landingpages.herokuapp.com/) on Heroku and join the project mailing list -->
 
 # Instructions
 

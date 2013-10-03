@@ -1,6 +1,8 @@
 require 'rubygems'
 require 'sinatra'
 require 'hominid' # MailChimp
+require 'sinatra/reloader' if development?
+require 'slim'
 
 configure do
 
