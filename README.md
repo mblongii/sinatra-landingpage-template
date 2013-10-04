@@ -5,7 +5,7 @@ A simple, customizable landing page for email signup, based on [Zurb](https://gi
 
 The current version has optional MailChimp and Google Analytics integration.
 
-[Check Out the Demo]()
+[Check Out the Demo](http://sinatra-email-landingpage.herokuapp.com/)
 
 # Instructions
 
