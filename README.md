@@ -22,6 +22,7 @@ The current version has optional MailChimp and Google Analytics integration.
 1. Test locally.
 1. Register for a free Heroku account (optional).
 1. Follow the [Ruby instructions](https://devcenter.heroku.com/articles/ruby) to deploy to Heroku (optional).
+1. If you are setting in vars in the .env file, make sure you [add these variables to Heroku!](https://devcenter.heroku.com/articles/config-vars)
 1. Configure [custom domain](https://devcenter.heroku.com/articles/custom-domains) name with Heroku.
 
 
