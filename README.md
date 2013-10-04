@@ -5,6 +5,7 @@ A simple, customizable landing page for email signup, based on [Zurb](https://gi
 
 The current version has optional MailChimp and Google Analytics integration.
 
+[Check Out the Demo]()
 
 # Instructions
 
@@ -23,3 +24,9 @@ The current version has optional MailChimp and Google Analytics integration.
 1. Follow the [Ruby instructions](https://devcenter.heroku.com/articles/ruby) to deploy to Heroku (optional).
 1. Configure [custom domain](https://devcenter.heroku.com/articles/custom-domains) name with Heroku.
 
+
+# Upcoming Features
+1. Live Reload
+1. Multiple deploy options
+1. Different Template Options
+	1. Maybe integrate [One Page Scroller](http://www.thepetedesign.com/demos/onepage_scroll_demo.html)
