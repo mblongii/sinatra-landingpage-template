@@ -1,7 +1,7 @@
 Email Landing Page
 ============
 
-A simple, customizable landing page for email signup, based on [Zurb](https://github.com/twitter/bootstrap), [HTML5 Boilerplate](https://github.com/h5bp/html5-boilerplate), and [Sinatra](https://github.com/sinatra/sinatra).
+A simple, customizable landing page for email signup, based on [Zurb](https://github.com/twitter/bootstrap), [HTML5 Boilerplate](https://github.com/h5bp/html5-boilerplate), and [Sinatra](https://github.com/sinatra/sinatra). Comes with Gaurd-Livereload to reload the browser (Install your browsers Live Reload plugin for this to work). To use, just run `$ foreman s -f Procfile.dev`
 
 The current version has optional MailChimp and Google Analytics integration.
 
