@@ -1,6 +1,8 @@
+#Base
 require 'rubygems'
 require 'sinatra'
 require 'sinatra/reloader' if development?
+require 'rack-flash'
 
 #Assets
 require 'slim'
@@ -9,26 +11,22 @@ require 'compass'
 require "zurb-foundation"
 
 #MailChimp
-require 'hominid'
-
-
+require 'mailchimp'
 
 
 configure do
-  set :slim, :pretty => true
+  enable :sessions, :logging
+  use Rack::Flash
 
   Compass.configuration do |config|
     config.project_path = File.dirname(__FILE__)
     config.sass_dir = 'views'
   end
+
+  set :slim, :pretty => true
   set :sass, Compass.sass_engine_options
-  
-  # In .env file:
-  # Add a MAILCHIMP_API_KEY=your_api_key
-  # Add a MAILCHIMP_LIST_NAME=your_list_name
-  # Uncomment the below lines..
-  # set :mailchimp_api_key, ENV["MAILCHIMP_API_KEY"]
-  # set :mailchimp_list_name, ENV["MAILCHIMP_LIST_NAME"]
+  set :mailchimp_api_key, ENV["MAILCHIMP_API_KEY"]
+  set :mailchimp_list_id, ENV["MAILCHIMP_LIST_ID"]
 end
 
 
@@ -41,19 +39,39 @@ get '/' do
   slim :home
 end
 
+get '/success' do
+  slim :success
+end
+
+get '/error' do
+  slim :error
+end
 
 post '/signup' do
+  @chimp = Mailchimp::API.new(settings.mailchimp_api_key)
+
   email = params[:email]
-  unless email.nil? || email.strip.empty?
+  firstname = params[:firstname]
+  lastname = params[:lastname]
+  website = params[:website]
+  lead_info = { FNAME: firstname, LNAME: lastname, MMERGE3: website }
 
-    mailchimp = Hominid::API.new(settings.mailchimp_api_key)
-    list_id = mailchimp.find_list_id_by_name(settings.mailchimp_list_name)
-    raise "Unable to retrieve list id from MailChimp API." unless list_id
-
-    # http://apidocs.mailchimp.com/api/rtfm/listsubscribe.func.php
-    # double_optin, update_existing, replace_interests, send_welcome are all true by default (change as desired)
-    mailchimp.list_subscribe(list_id, email, {}, 'html', true, true, true, true)
-
+  begin
+    @chimp.lists.subscribe( settings.mailchimp_list_id, { email: email, merge_vars: lead_info } )
+    flash[:notice] = "Thanks for signing up!"
+    redirect :error
+  rescue Mailchimp::ListAlreadySubscribedError
+    flash[:notice] = "#{email} is already subscribed to the list"
+    redirect :error
+    return
+  rescue Mailchimp::ListDoesNotExistError
+    flash[:notice] = "The list could not be found"
+    redirect :error
+    return
+  rescue Mailchimp::Error
+    flash[:notice] = "An unknwon error has occured"
+    redirect :error
+    return
   end
-  "Success."
+  
 end
