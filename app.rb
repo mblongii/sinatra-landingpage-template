@@ -52,9 +52,8 @@ end
 post '/signup' do
   @chimp = Mailchimp::API.new(settings.mailchimp_api_key)
 
-  email = params[:email]
-
   # Setup whatever data you want to capture 
+  email = params[:email]
   firstname = params[:firstname]
   lastname = params[:lastname]
   website = params[:website]

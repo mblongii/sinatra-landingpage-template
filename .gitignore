@@ -1,4 +1,5 @@
 .env
+NOTES.md
 .sass-cache/**/*
 */.DS_Store
 /.bundle
