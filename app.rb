@@ -25,8 +25,10 @@ configure do
 
   set :slim, :pretty => true
   set :sass, Compass.sass_engine_options
-  set :mailchimp_api_key, ENV["MAILCHIMP_API_KEY"]
-  set :mailchimp_list_id, ENV["MAILCHIMP_LIST_ID"]
+
+  # Set your list id and api key in .env and uncomment below lines..
+  # set :mailchimp_api_key, ENV["MAILCHIMP_API_KEY"]
+  # set :mailchimp_list_id, ENV["MAILCHIMP_LIST_ID"]
 end
 
 
@@ -51,6 +53,8 @@ post '/signup' do
   @chimp = Mailchimp::API.new(settings.mailchimp_api_key)
 
   email = params[:email]
+
+  # Setup whatever data you want to capture 
   firstname = params[:firstname]
   lastname = params[:lastname]
   website = params[:website]
