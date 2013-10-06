@@ -26,9 +26,9 @@ configure do
   set :slim, :pretty => true
   set :sass, Compass.sass_engine_options
 
-  # Set your list id and api key in .env and uncomment below lines..
-  # set :mailchimp_api_key, ENV["MAILCHIMP_API_KEY"]
-  # set :mailchimp_list_id, ENV["MAILCHIMP_LIST_ID"]
+  # Set your list id and api key in .env
+  set :mailchimp_api_key, ENV["MAILCHIMP_API_KEY"]
+  set :mailchimp_list_id, ENV["MAILCHIMP_LIST_ID"]
 end
 
 
