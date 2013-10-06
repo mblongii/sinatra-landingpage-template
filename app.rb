@@ -63,7 +63,8 @@ post '/signup' do
   begin
     @chimp.lists.subscribe( settings.mailchimp_list_id, { email: email, merge_vars: lead_info } )
     flash[:notice] = "Thanks for signing up!"
-    redirect :error
+    redirect :success
+    return
   rescue Mailchimp::ListAlreadySubscribedError
     flash[:notice] = "#{email} is already subscribed to the list"
     redirect :error
