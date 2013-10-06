@@ -60,7 +60,7 @@ post '/signup' do
   lead_info = { FNAME: firstname, LNAME: lastname, MMERGE3: website }
 
   begin
-    @chimp.lists.subscribe( settings.mailchimp_list_id, { email: email, merge_vars: lead_info } )
+    @chimp.lists.subscribe(settings.mailchimp_list_id, {email: email}, lead_info )
     flash[:notice] = "Thanks for signing up!"
     redirect :success
     return
